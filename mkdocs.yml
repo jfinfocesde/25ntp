@@ -87,5 +87,6 @@ nav:
 plugins:
   - search
   - blog
+  - glightbox
 
 
