@@ -1,0 +1,2648 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfocesde.github.io/25ntp/content/p4/">
+      
+      
+        <link rel="prev" href="../p3/">
+      
+      
+        <link rel="next" href="../p5/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Semana 4 - sistema de control de versiones - Nuevas Tecnologías de Programación</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/password-protect.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#semana-4-sistema-de-control-de-versiones" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-header__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nuevas Tecnologías de Programación
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Semana 4 - sistema de control de versiones
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pi/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Proyecto Integrador
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  Acerca de
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-nav__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Nuevas Tecnologías de Programación
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 1 - Pacto pedagógico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 2 - Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 3 - Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Semana 4 - sistema de control de versiones
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Semana 4 - sistema de control de versiones
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Git?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave de Git:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-y-configuracion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación y configuración inicial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-comandos-basicos-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Comandos básicos de Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Comandos básicos de Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializar-un-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inicializar un repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clonar-un-repositorio-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clonar un repositorio existente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-el-estado-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver el estado del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-cambios-al-area-de-preparacion-staging-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar cambios al área de preparación (staging area)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-un-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacer un commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-el-historial-de-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver el historial de commits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trabajar-con-ramas-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Trabajar con ramas (branches)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trabajar con ramas (branches)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-una-nueva-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear una nueva rama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-a-una-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambiar a una rama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fusionar-ramas-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fusionar ramas (merge)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminar-una-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminar una rama
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-trabajar-con-repositorios-remotos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Trabajar con repositorios remotos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Trabajar con repositorios remotos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadir-un-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Añadir un repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviar-cambios-al-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enviar cambios al repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traer-cambios-del-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traer cambios del repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-que-es-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. ¿Qué es GitHub?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. ¿Qué es GitHub?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-subir-un-proyecto-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para subir un proyecto a GitHub:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pull-requests-prs" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Pull Requests (PRs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Pull Requests (PRs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flujo-tipico-de-trabajo-con-prs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo típico de trabajo con PRs:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-resolver-conflictos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Resolver conflictos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Resolver conflictos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-resolver-un-conflicto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para resolver un conflicto:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-herramientas-utiles-en-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Herramientas útiles en GitHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Herramientas útiles en GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyectos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyectos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Pages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Buenas prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-1-flujo-de-trabajo-con-github-para-dos-desarrolladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACTIVIDAD 1: FLUJO DE TRABAJO CON GITHUB PARA DOS DESARROLLADORES
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACTIVIDAD 1: FLUJO DE TRABAJO CON GITHUB PARA DOS DESARROLLADORES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración inicial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-una-nueva-funcionalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear una nueva funcionalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-revision-y-fusion-de-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Revisión y fusión de cambios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-finalizar-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Finalizar el proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-2-flujo-de-trabajo-con-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACTIVIDAD 2: FLUJO DE TRABAJO CON FORK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACTIVIDAD 2: FLUJO DE TRABAJO CON FORK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración inicial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-contribuir-al-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Contribuir al proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enviar-cambios-al-propietario" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enviar cambios al propietario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mantener-el-fork-actualizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mantener el fork actualizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-entregables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 5 Entornos Virtuales en Python:
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 6 - Evaluación Primer Momento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 7 - Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 8 - Exploración de Datos con Pandas y Streamlit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 9 - Filtrado de datos en Pandas con todas las formas y operadores
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 10 Filtros .loc y .iloc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 11 - Operaciones de Agregar, Agrupar y Fusionar en Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Página Restringida
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Proyecto Integrador
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Proyecto Integrador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción al Proyecto Integrador
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Herramientas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aplicación Streamlit (Evidencias - Proyecto Integrador)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fuentes de datos abiertos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Archivo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acerca de
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ¿Qué es Git?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ¿Qué es Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conceptos-clave-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conceptos clave de Git:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-instalacion-y-configuracion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación y configuración inicial
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-comandos-basicos-de-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Comandos básicos de Git
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Comandos básicos de Git">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializar-un-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inicializar un repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clonar-un-repositorio-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clonar un repositorio existente
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-el-estado-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver el estado del repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-cambios-al-area-de-preparacion-staging-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregar cambios al área de preparación (staging area)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-un-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hacer un commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ver-el-historial-de-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ver el historial de commits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trabajar-con-ramas-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Trabajar con ramas (branches)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trabajar con ramas (branches)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-una-nueva-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crear una nueva rama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cambiar-a-una-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cambiar a una rama
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fusionar-ramas-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fusionar ramas (merge)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminar-una-rama" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminar una rama
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-trabajar-con-repositorios-remotos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Trabajar con repositorios remotos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Trabajar con repositorios remotos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadir-un-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Añadir un repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviar-cambios-al-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enviar cambios al repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traer-cambios-del-repositorio-remoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traer cambios del repositorio remoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-que-es-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. ¿Qué es GitHub?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. ¿Qué es GitHub?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-subir-un-proyecto-a-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para subir un proyecto a GitHub:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pull-requests-prs" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Pull Requests (PRs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Pull Requests (PRs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flujo-tipico-de-trabajo-con-prs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo típico de trabajo con PRs:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-resolver-conflictos" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Resolver conflictos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Resolver conflictos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pasos-para-resolver-un-conflicto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pasos para resolver un conflicto:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-herramientas-utiles-en-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Herramientas útiles en GitHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Herramientas útiles en GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyectos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyectos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Pages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Buenas prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-1-flujo-de-trabajo-con-github-para-dos-desarrolladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACTIVIDAD 1: FLUJO DE TRABAJO CON GITHUB PARA DOS DESARROLLADORES
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACTIVIDAD 1: FLUJO DE TRABAJO CON GITHUB PARA DOS DESARROLLADORES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración inicial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-crear-una-nueva-funcionalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Crear una nueva funcionalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-revision-y-fusion-de-cambios" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Revisión y fusión de cambios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-finalizar-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Finalizar el proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-entregables" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividad-2-flujo-de-trabajo-con-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACTIVIDAD 2: FLUJO DE TRABAJO CON FORK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ACTIVIDAD 2: FLUJO DE TRABAJO CON FORK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-a-paso_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-configuracion-inicial_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Configuración inicial
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-contribuir-al-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Contribuir al proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enviar-cambios-al-propietario" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enviar cambios al propietario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mantener-el-fork-actualizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Mantener el fork actualizado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-entregables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Entregables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="semana-4-sistema-de-control-de-versiones"><strong>Semana 4 - sistema de control de versiones</strong></h1>
+<h2 id="1-que-es-git"><strong>1. ¿Qué es Git?</strong></h2>
+<p>Git es un sistema de control de versiones distribuido que permite rastrear cambios en archivos y colaborar con otros desarrolladores. Es esencial para el desarrollo de software moderno.</p>
+<h3 id="conceptos-clave-de-git"><strong>Conceptos clave de Git:</strong></h3>
+<ul>
+<li><strong>Repositorio (repo):</strong> Un directorio donde se almacenan todos los archivos y su historial de cambios.</li>
+<li><strong>Commit:</strong> Una "instantánea" de los cambios realizados en el repositorio.</li>
+<li><strong>Branch (rama):</strong> Una línea de desarrollo independiente dentro del repositorio.</li>
+<li><strong>Merge:</strong> Combinar cambios de una rama a otra.</li>
+<li><strong>Remote:</strong> Referencia a un repositorio remoto, como GitHub.</li>
+</ul>
+<hr />
+<h2 id="2-instalacion-y-configuracion-inicial"><strong>2. Instalación y configuración inicial</strong></h2>
+<ol>
+<li><strong>Instalar Git:</strong></li>
+<li>En Windows: Descarga el instalador desde <a href="https://git-scm.com/">git-scm.com</a>.</li>
+<li>En macOS: Usa <code>brew install git</code> o instálalo desde las preferencias del sistema.</li>
+<li>
+<p>En Linux: Usa <code>sudo apt install git</code> (Ubuntu) o <code>sudo yum install git</code> (Fedora).</p>
+</li>
+<li>
+<p><strong>Configuración inicial:</strong>
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Tu Nombre&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;tu@email.com&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Verificar la configuración:</strong>
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--list
+</code></pre></div></p>
+</li>
+</ol>
+<hr />
+<h2 id="3-comandos-basicos-de-git"><strong>3. Comandos básicos de Git</strong></h2>
+<h3 id="inicializar-un-repositorio"><strong>Inicializar un repositorio</strong></h3>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>init
+</code></pre></div>
+Crea un nuevo repositorio en el directorio actual.</p>
+<h3 id="clonar-un-repositorio-existente"><strong>Clonar un repositorio existente</strong></h3>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div>
+Descarga un repositorio remoto a tu máquina local.</p>
+<h3 id="ver-el-estado-del-repositorio"><strong>Ver el estado del repositorio</strong></h3>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
+</code></pre></div>
+Muestra los archivos modificados, pendientes de commit, etc.</p>
+<h3 id="agregar-cambios-al-area-de-preparacion-staging-area"><strong>Agregar cambios al área de preparación (staging area)</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>&lt;archivo&gt;
+git<span class="w"> </span>add<span class="w"> </span>.<span class="w">  </span><span class="c1"># Agrega todos los cambios</span>
+</code></pre></div>
+<h3 id="hacer-un-commit"><strong>Hacer un commit</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mensaje descriptivo de los cambios&quot;</span>
+</code></pre></div>
+<h3 id="ver-el-historial-de-commits"><strong>Ver el historial de commits</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>log
+</code></pre></div>
+<hr />
+<h2 id="4-trabajar-con-ramas-branches"><strong>4. Trabajar con ramas (branches)</strong></h2>
+<h3 id="crear-una-nueva-rama"><strong>Crear una nueva rama</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+<h3 id="cambiar-a-una-rama"><strong>Cambiar a una rama</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+<span class="c1"># O usar el comando combinado:</span>
+git<span class="w"> </span>switch<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+<h3 id="fusionar-ramas-merge"><strong>Fusionar ramas (merge)</strong></h3>
+<p><div class="highlight"><pre><span></span><code>git<span class="w"> </span>merge<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+Combina los cambios de una rama en la rama actual.</p>
+<h3 id="eliminar-una-rama"><strong>Eliminar una rama</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+<hr />
+<h2 id="5-trabajar-con-repositorios-remotos"><strong>5. Trabajar con repositorios remotos</strong></h2>
+<h3 id="anadir-un-repositorio-remoto"><strong>Añadir un repositorio remoto</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div>
+<h3 id="enviar-cambios-al-repositorio-remoto"><strong>Enviar cambios al repositorio remoto</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+<h3 id="traer-cambios-del-repositorio-remoto"><strong>Traer cambios del repositorio remoto</strong></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>&lt;nombre-de-la-rama&gt;
+</code></pre></div>
+<hr />
+<h2 id="6-que-es-github"><strong>6. ¿Qué es GitHub?</strong></h2>
+<p>GitHub es una plataforma basada en la nube que aloja repositorios de Git. Además de almacenar código, ofrece herramientas para colaboración, como pull requests, issues y proyectos.</p>
+<h3 id="pasos-para-subir-un-proyecto-a-github"><strong>Pasos para subir un proyecto a GitHub:</strong></h3>
+<ol>
+<li>Crea un repositorio en GitHub (botón "New").</li>
+<li>Copia la URL del repositorio.</li>
+<li>Enlaza tu repositorio local con GitHub:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div></li>
+<li>Sube los cambios:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="7-pull-requests-prs"><strong>7. Pull Requests (PRs)</strong></h2>
+<p>Un <strong>Pull Request</strong> es una solicitud para fusionar cambios de una rama a otra (generalmente desde una rama de características a la rama principal).</p>
+<h3 id="flujo-tipico-de-trabajo-con-prs"><strong>Flujo típico de trabajo con PRs:</strong></h3>
+<ol>
+<li>Crear una nueva rama para tus cambios.</li>
+<li>Hacer commits en esa rama.</li>
+<li>Subir la rama al repositorio remoto.</li>
+<li>Crear un Pull Request en GitHub.</li>
+<li>Revisar los cambios y fusionarlos si están aprobados.</li>
+</ol>
+<hr />
+<h2 id="8-resolver-conflictos"><strong>8. Resolver conflictos</strong></h2>
+<p>Cuando dos personas modifican el mismo archivo en diferentes ramas, puede surgir un conflicto al fusionarlas. Git te notificará sobre los conflictos.</p>
+<h3 id="pasos-para-resolver-un-conflicto"><strong>Pasos para resolver un conflicto:</strong></h3>
+<ol>
+<li>Abre el archivo conflictivo.</li>
+<li>Edita manualmente el archivo para resolver las diferencias.</li>
+<li>Marca el conflicto como resuelto:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>&lt;archivo-conflictivo&gt;
+</code></pre></div></li>
+<li>Completa el merge:
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="9-herramientas-utiles-en-github"><strong>9. Herramientas útiles en GitHub</strong></h2>
+<h3 id="issues"><strong>Issues</strong></h3>
+<p>Permiten reportar problemas, sugerir mejoras o asignar tareas.</p>
+<h3 id="proyectos"><strong>Proyectos</strong></h3>
+<p>Tableros Kanban para organizar tareas y seguimiento.</p>
+<h3 id="github-actions"><strong>GitHub Actions</strong></h3>
+<p>Automatiza flujos de trabajo, como pruebas y despliegues.</p>
+<h3 id="github-pages"><strong>GitHub Pages</strong></h3>
+<p>Publica sitios web directamente desde un repositorio.</p>
+<hr />
+<h2 id="10-buenas-practicas"><strong>10. Buenas prácticas</strong></h2>
+<ol>
+<li><strong>Haz commits pequeños y frecuentes:</strong> Facilita la revisión y el seguimiento.</li>
+<li><strong>Usa mensajes claros en los commits:</strong> Describe qué cambiaste y por qué.</li>
+<li><strong>Trabaja en ramas separadas:</strong> Evita modificar directamente la rama principal (<code>main</code> o <code>master</code>).</li>
+<li><strong>Sincroniza regularmente:</strong> Usa <code>git pull</code> para mantener tu repositorio actualizado.</li>
+<li><strong>Revisa antes de hacer push:</strong> Asegúrate de que tus cambios no rompan el código.</li>
+</ol>
+<hr />
+<p>¡Claro! A continuación, agrego los <strong>entregables</strong> para cada una de las actividades. Estos entregables son los resultados tangibles que se deben generar al completar las tareas descritas en cada flujo de trabajo.</p>
+<hr />
+<p>¡Claro! A continuación, te presento dos actividades detalladas: una enfocada en un <strong>flujo de trabajo con GitHub para dos desarrolladores</strong> y otra sobre un <strong>flujo de trabajo con Fork</strong>. Ambas actividades están diseñadas para que puedas practicar y entender cómo colaborar eficientemente en proyectos.</p>
+<hr />
+<h2 id="actividad-1-flujo-de-trabajo-con-github-para-dos-desarrolladores"><strong>ACTIVIDAD 1: FLUJO DE TRABAJO CON GITHUB PARA DOS DESARROLLADORES</strong></h2>
+<h3 id="objetivo"><strong>Objetivo</strong></h3>
+<p>Simular el proceso de colaboración entre dos desarrolladores en un proyecto alojado en GitHub. Se utilizarán ramas, pull requests y revisión de código.</p>
+<hr />
+<h3 id="paso-a-paso"><strong>Paso a paso</strong></h3>
+<h4 id="1-configuracion-inicial"><strong>1. Configuración inicial</strong></h4>
+<ul>
+<li><strong>Desarrollador 1 (D1):</strong></li>
+<li>Crea un repositorio en GitHub llamado <code>proyecto-colaborativo</code>.</li>
+<li>Clona el repositorio en tu máquina local:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div></li>
+<li>
+<p>Crea un archivo <code>README.md</code> con una descripción básica del proyecto y haz el primer commit:
+     <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Proyecto Colaborativo&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadido README inicial&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Desarrollador 2 (D2):</strong></p>
+</li>
+<li>Clona el mismo repositorio en tu máquina local:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="2-crear-una-nueva-funcionalidad"><strong>2. Crear una nueva funcionalidad</strong></h4>
+<ul>
+<li><strong>Desarrollador 1 (D1):</strong></li>
+<li>Crea una nueva rama para trabajar en una funcionalidad:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/calculadora
+</code></pre></div></li>
+<li>Agrega un archivo <code>calculadora.py</code> con una función básica:
+     <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">suma</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></li>
+<li>
+<p>Haz commit de los cambios:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>calculadora.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadida función suma en calculadora&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/calculadora
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Desarrollador 2 (D2):</strong></p>
+</li>
+<li>Sincroniza tu repositorio local con el remoto:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></li>
+<li>Crea una nueva rama para trabajar en otra funcionalidad:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/multiplicacion
+</code></pre></div></li>
+<li>Agrega un archivo <code>multiplicacion.py</code> con una función básica:
+     <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">multiplicar</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</code></pre></div></li>
+<li>Haz commit de los cambios:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>multiplicacion.py
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadida función multiplicar&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/multiplicacion
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="3-revision-y-fusion-de-cambios"><strong>3. Revisión y fusión de cambios</strong></h4>
+<ul>
+<li><strong>Desarrollador 1 (D1):</strong></li>
+<li>Ve a GitHub y crea un <strong>Pull Request</strong> desde la rama <code>feature/calculadora</code> hacia <code>main</code>.</li>
+<li>
+<p>Asigna al Desarrollador 2 como revisor.</p>
+</li>
+<li>
+<p><strong>Desarrollador 2 (D2):</strong></p>
+</li>
+<li>Revisa el Pull Request en GitHub. Comenta si es necesario y aprueba los cambios.</li>
+<li>
+<p>Fusiona el Pull Request en GitHub.</p>
+</li>
+<li>
+<p><strong>Ambos desarrolladores:</strong></p>
+</li>
+<li>Sincroniza tu repositorio local con el remoto:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="4-finalizar-el-proyecto"><strong>4. Finalizar el proyecto</strong></h4>
+<ul>
+<li>Repite el proceso para fusionar la rama <code>feature/multiplicacion</code> en <code>main</code>.</li>
+<li>Verifica que ambos archivos (<code>calculadora.py</code> y <code>multiplicacion.py</code>) estén en la rama <code>main</code>.</li>
+</ul>
+<hr />
+<h4 id="5-entregables"><strong>5. Entregables</strong></h4>
+<p>Al finalizar la actividad, los siguientes elementos deben estar completos y disponibles:</p>
+<ol>
+<li><strong>Repositorio en GitHub:</strong></li>
+<li>Un repositorio llamado <code>proyecto-colaborativo</code> con las ramas <code>main</code>, <code>feature/calculadora</code> y <code>feature/multiplicacion</code>.</li>
+<li>
+<p>El repositorio debe contener los siguientes archivos:</p>
+<ul>
+<li><code>README.md</code>: Con una descripción básica del proyecto.</li>
+<li><code>calculadora.py</code>: Con la función <code>suma(a, b)</code>.</li>
+<li><code>multiplicacion.py</code>: Con la función <code>multiplicar(a, b)</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Historial de commits:</strong></p>
+</li>
+<li>
+<p>El historial de commits en la rama <code>main</code> debe mostrar:</p>
+<ul>
+<li>El commit inicial con el archivo <code>README.md</code>.</li>
+<li>Los commits fusionados desde las ramas <code>feature/calculadora</code> y <code>feature/multiplicacion</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Pull Requests cerrados:</strong></p>
+</li>
+<li>Dos Pull Requests fusionados en GitHub:<ul>
+<li>Uno desde <code>feature/calculadora</code> hacia <code>main</code>.</li>
+<li>Otro desde <code>feature/multiplicacion</code> hacia <code>main</code>.</li>
+</ul>
+</li>
+<li>Cada Pull Request debe incluir comentarios de revisión y aprobación.</li>
+</ol>
+<hr />
+<hr />
+<h2 id="actividad-2-flujo-de-trabajo-con-fork"><strong>ACTIVIDAD 2: FLUJO DE TRABAJO CON FORK</strong></h2>
+<h3 id="objetivo_1"><strong>Objetivo</strong></h3>
+<p>Simular el proceso de contribución a un proyecto utilizando un <strong>fork</strong>, común en proyectos de código abierto.</p>
+<hr />
+<h3 id="paso-a-paso_1"><strong>Paso a paso</strong></h3>
+<h4 id="1-configuracion-inicial_1"><strong>1. Configuración inicial</strong></h4>
+<ul>
+<li><strong>Propietario del repositorio (P):</strong></li>
+<li>Crea un repositorio en GitHub llamado <code>proyecto-fork</code>.</li>
+<li>Clona el repositorio en tu máquina local:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL-del-repositorio&gt;
+</code></pre></div></li>
+<li>
+<p>Crea un archivo <code>README.md</code> con una descripción básica del proyecto y haz el primer commit:
+     <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# Proyecto Fork&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>README.md
+git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Añadido README inicial&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Contribuyente (C):</strong></p>
+</li>
+<li>Ve al repositorio <code>proyecto-fork</code> en GitHub y haz clic en el botón <strong>Fork</strong> para crear una copia en tu cuenta.</li>
+</ul>
+<hr />
+<h4 id="2-contribuir-al-proyecto"><strong>2. Contribuir al proyecto</strong></h4>
+<ul>
+<li><strong>Contribuyente (C):</strong></li>
+<li>Clona tu fork en tu máquina local:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>&lt;URL-de-tu-fork&gt;
+</code></pre></div></li>
+<li>Crea una nueva rama para trabajar en una mejora:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/mejora-readme
+</code></pre></div></li>
+<li>Edita el archivo <code>README.md</code> para añadir más detalles o correcciones.</li>
+<li>Haz commit de los cambios:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>README.md
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Mejorado el README con más detalles&quot;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>feature/mejora-readme
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="3-enviar-cambios-al-propietario"><strong>3. Enviar cambios al propietario</strong></h4>
+<ul>
+<li><strong>Contribuyente (C):</strong></li>
+<li>Ve a tu fork en GitHub y crea un <strong>Pull Request</strong> desde la rama <code>feature/mejora-readme</code> hacia la rama <code>main</code> del repositorio original.</li>
+<li>
+<p>Describe los cambios realizados en el Pull Request.</p>
+</li>
+<li>
+<p><strong>Propietario del repositorio (P):</strong></p>
+</li>
+<li>Revisa el Pull Request en GitHub.</li>
+<li>Si los cambios son aceptables, fusiona el Pull Request en la rama <code>main</code>.</li>
+</ul>
+<hr />
+<h4 id="4-mantener-el-fork-actualizado"><strong>4. Mantener el fork actualizado</strong></h4>
+<ul>
+<li><strong>Contribuyente (C):</strong></li>
+<li>Agrega el repositorio original como un remote adicional:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>&lt;URL-del-repositorio-original&gt;
+</code></pre></div></li>
+<li>Trae los cambios del repositorio original:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+</code></pre></div></li>
+<li>Actualiza tu rama <code>main</code> con los cambios del repositorio original:
+     <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>merge<span class="w"> </span>upstream/main
+</code></pre></div></li>
+</ul>
+<hr />
+<h4 id="5-entregables_1"><strong>5. Entregables</strong></h4>
+<p>Al finalizar la actividad, los siguientes elementos deben estar completos y disponibles:</p>
+<ol>
+<li><strong>Repositorio original y fork:</strong></li>
+<li>Un repositorio original llamado <code>proyecto-fork</code> con al menos un archivo <code>README.md</code>.</li>
+<li>
+<p>Un fork del repositorio original en la cuenta del contribuyente.</p>
+</li>
+<li>
+<p><strong>Ramas y commits:</strong></p>
+</li>
+<li>
+<p>En el fork del contribuyente, debe existir una rama llamada <code>feature/mejora-readme</code> con al menos un commit que mejore el archivo <code>README.md</code>.</p>
+</li>
+<li>
+<p><strong>Pull Request fusionado:</strong></p>
+</li>
+<li>Un Pull Request creado desde el fork del contribuyente hacia el repositorio original.</li>
+<li>
+<p>El Pull Request debe estar fusionado en la rama <code>main</code> del repositorio original.</p>
+</li>
+<li>
+<p><strong>Archivo README.md actualizado:</strong></p>
+</li>
+<li>
+<p>El archivo <code>README.md</code> en el repositorio original debe reflejar las mejoras realizadas por el contribuyente. Por ejemplo:
+     <div class="highlight"><pre><span></span><code><span class="gh"># Proyecto Fork</span>
+
+Este es un proyecto de ejemplo para practicar el flujo de trabajo con forks.
+
+<span class="gu">### Mejoras realizadas:</span>
+<span class="k">-</span><span class="w"> </span>Se añadieron detalles sobre el propósito del proyecto.
+<span class="k">-</span><span class="w"> </span>Se incluyó información sobre cómo contribuir.
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Fork sincronizado:</strong></p>
+</li>
+<li>El fork del contribuyente debe estar actualizado con los cambios del repositorio original. Esto se puede verificar comparando las ramas <code>main</code> de ambos repositorios.</li>
+</ol>
+<hr />
+<h3 id="conclusion"><strong>Conclusión</strong></h3>
+<p>Estas dos actividades te permiten practicar flujos de trabajo comunes en proyectos colaborativos. La primera actividad es ideal para equipos pequeños que trabajan directamente en el mismo repositorio, mientras que la segunda es útil para contribuciones externas en proyectos de código abierto.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../js/password-protect.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

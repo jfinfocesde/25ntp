@@ -50,7 +50,13 @@ markdown_extensions:
   - pymdownx.blocks.caption
 
 extra:
-  generator: false  
+  generator: false
+
+extra_javascript:
+  - js/password-protect.js
+
+extra_css:
+  - assets/stylesheets/password-protect.css
 
 copyright: 2025 &copy; by JFVG
 
@@ -90,5 +96,5 @@ plugins:
   - search
   - blog
   - glightbox
-
+  
 
