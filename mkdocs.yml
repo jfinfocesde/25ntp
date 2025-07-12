@@ -68,11 +68,8 @@ nav:
 
 
   - Proyecto Integrador: 
-      - pi/p1.md
-     
-  - Blog:
-     - blog/index.md
-  - Acerca de: about.md
+      - pi/p1.md    
+
 
 plugins:
   - search
