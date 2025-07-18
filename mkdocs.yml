@@ -48,6 +48,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.blocks.caption
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra:
   generator: false
@@ -65,7 +70,7 @@ nav:
   - Contenido:
       - content/p1.md
       - content/p2.md 
-      # - content/p3.md
+      - content/p3.md
       # - content/p4.md
       # - content/p5.md
       # - content/p6.md
