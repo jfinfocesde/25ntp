@@ -90,6 +90,8 @@ nav:
 
   - Actividades: 
       - activities/p1.md    
+      - activities/p2.md    
+      - activities/p3.md    
 
 
 plugins:
