@@ -1,0 +1,2211 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfocesde.github.io/25ntp/activities/p6/">
+      
+      
+        <link rel="prev" href="../p5/">
+      
+      
+        <link rel="next" href="../../pi/p1/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica - Nuevas Tecnologías de Programación</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/password-protect.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#semana-10-filtrado-y-seleccion-de-datos-con-pandas-actividad-practica" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-header__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nuevas Tecnologías de Programación
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../content/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pi/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Proyecto Integrrador
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-nav__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Nuevas Tecnologías de Programación
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 1 - Pacto pedagógico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 2 - Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 3 - ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 4 - Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 5 - Guía Completa sobre Git, GitHub y Fork
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 6 - Evaluación Primer Momento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 7 Entornos Virtuales en Python:
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 8 - Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 10 Filtros .loc y .iloc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 11 - Operaciones de Agregar, Agrupar y Fusionar en Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 12 - Evaluación de Conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 13 - Graficos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 14: Despliegue de Aplicaciones Streamlit en la Nube
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 16 - Evaluación de Conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../content/p17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 17 - Ensayo individual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 2: Ejercicios de Python para Resolver en Google Colab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 3: Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 4: Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 8: Análisis de Datos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 9: Filtros y Operadores Lógicos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-la-actividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Instrucciones de la Actividad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Instrucciones de la Actividad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Configuración del Entorno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fork del Repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación de Dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estructura del Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-a-resolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Ejercicios a Resolver
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Ejercicios a Resolver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-general-para-todos-los-ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 DataFrame General para Todos los Ejercicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-loc-filtrado-por-etiquetas-ejercicios-1-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 EJERCICIOS LOC - Filtrado por Etiquetas (Ejercicios 1-10)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 EJERCICIOS LOC - Filtrado por Etiquetas (Ejercicios 1-10)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-seleccion-basica-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Selección Básica con .loc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-filtrado-con-condiciones-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Filtrado con Condiciones Simples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-filtrado-con-multiples-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Filtrado con Múltiples Condiciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-seleccion-de-columnas-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Selección de Columnas Específicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5-modificacion-de-datos-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5: Modificación de Datos con .loc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6-filtrado-con-funciones-de-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6: Filtrado con Funciones de String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-7-filtrado-por-fechas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 7: Filtrado por Fechas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-8-filtrado-avanzado-con-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 8: Filtrado Avanzado con Funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-9-combinacion-de-filtros-complejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 9: Combinación de Filtros Complejos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-10-analisis-completo-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 10: Análisis Completo con .loc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-iloc-filtrado-por-posicion-ejercicios-11-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔢 EJERCICIOS ILOC - Filtrado por Posición (Ejercicios 11-20)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 EJERCICIOS ILOC - Filtrado por Posición (Ejercicios 11-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-11-seleccion-basica-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 11: Selección Básica con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-12-seleccion-con-rangos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 12: Selección con Rangos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-13-seleccion-de-multiples-filas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 13: Selección de Múltiples Filas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-14-seleccion-de-columnas-por-posicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 14: Selección de Columnas por Posición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-15-modificacion-de-datos-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 15: Modificación de Datos con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-16-seleccion-con-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 16: Selección con Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-17-seleccion-avanzada-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 17: Selección Avanzada con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-18-trabajo-con-listas-de-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 18: Trabajo con Listas de Índices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-19-combinaciones-de-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 19: Combinaciones de .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-20-analisis-completo-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 20: Análisis Completo con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Proyecto Integrrador
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Proyecto Integrrador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proyecto Integrador
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fuentes de datos abiertos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumir una API de Mockoon y Convertirla en un DataFrame con Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cursos Platzi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instrucciones-de-la-actividad" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Instrucciones de la Actividad
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Instrucciones de la Actividad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objetivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Objetivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Configuración del Entorno
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork-del-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fork del Repositorio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-instalacion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Instalación de Dependencias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Estructura del Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-a-resolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Ejercicios a Resolver
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Ejercicios a Resolver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataframe-general-para-todos-los-ejercicios" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 DataFrame General para Todos los Ejercicios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-loc-filtrado-por-etiquetas-ejercicios-1-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 EJERCICIOS LOC - Filtrado por Etiquetas (Ejercicios 1-10)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 EJERCICIOS LOC - Filtrado por Etiquetas (Ejercicios 1-10)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-seleccion-basica-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Selección Básica con .loc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-2-filtrado-con-condiciones-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2: Filtrado con Condiciones Simples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-3-filtrado-con-multiples-condiciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 3: Filtrado con Múltiples Condiciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-4-seleccion-de-columnas-especificas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 4: Selección de Columnas Específicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-5-modificacion-de-datos-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 5: Modificación de Datos con .loc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-6-filtrado-con-funciones-de-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 6: Filtrado con Funciones de String
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-7-filtrado-por-fechas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 7: Filtrado por Fechas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-8-filtrado-avanzado-con-funciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 8: Filtrado Avanzado con Funciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-9-combinacion-de-filtros-complejos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 9: Combinación de Filtros Complejos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-10-analisis-completo-con-loc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 10: Análisis Completo con .loc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicios-iloc-filtrado-por-posicion-ejercicios-11-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔢 EJERCICIOS ILOC - Filtrado por Posición (Ejercicios 11-20)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔢 EJERCICIOS ILOC - Filtrado por Posición (Ejercicios 11-20)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-11-seleccion-basica-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 11: Selección Básica con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-12-seleccion-con-rangos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 12: Selección con Rangos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-13-seleccion-de-multiples-filas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 13: Selección de Múltiples Filas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-14-seleccion-de-columnas-por-posicion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 14: Selección de Columnas por Posición
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-15-modificacion-de-datos-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 15: Modificación de Datos con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-16-seleccion-con-pasos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 16: Selección con Pasos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-17-seleccion-avanzada-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 17: Selección Avanzada con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-18-trabajo-con-listas-de-indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 18: Trabajo con Listas de Índices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-19-combinaciones-de-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 19: Combinaciones de .iloc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-20-analisis-completo-con-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 20: Análisis Completo con .iloc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="semana-10-filtrado-y-seleccion-de-datos-con-pandas-actividad-practica">Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica</h1>
+<h2 id="instrucciones-de-la-actividad">🎯 Instrucciones de la Actividad</h2>
+<h3 id="objetivo">📋 Objetivo</h3>
+<p>Desarrollar habilidades avanzadas en el filtrado y selección de datos con Pandas, dominando el uso de los métodos <code>.loc</code> e <code>.iloc</code> para acceder y manipular datos de manera eficiente en DataFrames.</p>
+<h3 id="configuracion-del-entorno">🔧 Configuración del Entorno</h3>
+<h4 id="1-fork-del-repositorio">1. Fork del Repositorio</h4>
+<ol>
+<li><strong>Hacer Fork</strong>: Haz clic en el botón "Fork" en la esquina superior derecha de este repositorio</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>https://github.com/jfinfocesde/act_ntp_s10.git
+</code></pre></div>
+2. <strong>Clonar tu Fork</strong>: Clona tu repositorio fork a tu máquina local
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/TU_USUARIO/act_ntp_s10.git
+<span class="nb">cd</span><span class="w"> </span>act_ntp_s10
+</code></pre></div></p>
+<h4 id="2-instalacion-de-dependencias">2. Instalación de Dependencias</h4>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>numpy<span class="w"> </span>datetime
+</code></pre></div>
+<h4 id="3-estructura-del-proyecto">3. Estructura del Proyecto</h4>
+<div class="highlight"><pre><span></span><code>act_ntp_s10/
+├── README.md              # Este archivo con instrucciones
+├── activities.json        # Lista de ejercicios
+├── evaluations.json       # Criterios de evaluación
+├── info.json             # Información del proyecto
+├── data/                 # Carpeta para archivos de datos
+│   └── dataset_general.csv # Dataset principal para todos los ejercicios
+└── src/                  # Carpeta para tus soluciones
+    ├── ejercicio_01.py   # Ejercicio 1 - loc básico
+    ├── ejercicio_02.py   # Ejercicio 2 - loc con condiciones
+    ├── ejercicio_03.py   # Ejercicio 3 - loc múltiples condiciones
+    ├── ejercicio_04.py   # Ejercicio 4 - loc con rangos
+    ├── ejercicio_05.py   # Ejercicio 5 - loc modificación datos
+    ├── ejercicio_06.py   # Ejercicio 6 - loc con funciones
+    ├── ejercicio_07.py   # Ejercicio 7 - loc avanzado
+    ├── ejercicio_08.py   # Ejercicio 8 - loc con strings
+    ├── ejercicio_09.py   # Ejercicio 9 - loc con fechas
+    ├── ejercicio_10.py   # Ejercicio 10 - loc combinado
+    ├── ejercicio_11.py   # Ejercicio 11 - iloc básico
+    ├── ejercicio_12.py   # Ejercicio 12 - iloc con rangos
+    ├── ejercicio_13.py   # Ejercicio 13 - iloc múltiples filas
+    ├── ejercicio_14.py   # Ejercicio 14 - iloc columnas específicas
+    ├── ejercicio_15.py   # Ejercicio 15 - iloc modificación
+    ├── ejercicio_16.py   # Ejercicio 16 - iloc con pasos
+    ├── ejercicio_17.py   # Ejercicio 17 - iloc avanzado
+    ├── ejercicio_18.py   # Ejercicio 18 - iloc con listas
+    ├── ejercicio_19.py   # Ejercicio 19 - iloc combinaciones
+    └── ejercicio_20.py   # Ejercicio 20 - iloc complejo
+</code></pre></div>
+<h2 id="ejercicios-a-resolver">🚀 Ejercicios a Resolver</h2>
+<h3 id="dataframe-general-para-todos-los-ejercicios">📊 DataFrame General para Todos los Ejercicios</h3>
+<p>Todos los ejercicios trabajarán con el mismo DataFrame que contiene información de empleados de una empresa. Este DataFrame incluye las siguientes columnas:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="c1"># DataFrame general que usarás en todos los ejercicios</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;empleado_id&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">),</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Empleado_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span>
+    <span class="s1">&#39;apellido&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Apellido_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span>
+    <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s1">&#39;departamento&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Ventas&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;RRHH&#39;</span><span class="p">,</span> <span class="s1">&#39;Finanzas&#39;</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s1">&#39;salario&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">120000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1460</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)],</span>
+    <span class="s1">&#39;activo&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">]),</span>
+    <span class="s1">&#39;ciudad&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;Bogotá&#39;</span><span class="p">,</span> <span class="s1">&#39;Medellín&#39;</span><span class="p">,</span> <span class="s1">&#39;Cali&#39;</span><span class="p">,</span> <span class="s1">&#39;Barranquilla&#39;</span><span class="p">,</span> <span class="s1">&#39;Cartagena&#39;</span><span class="p">],</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s1">&#39;experiencia_años&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;empleado_id&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Estructura del DataFrame:</strong></p>
+<ul>
+<li><strong>empleado_id</strong>: ID único del empleado (índice)</li>
+<li><strong>nombre</strong>: Nombre del empleado</li>
+<li><strong>apellido</strong>: Apellido del empleado</li>
+<li><strong>edad</strong>: Edad en años</li>
+<li><strong>departamento</strong>: Departamento donde trabaja</li>
+<li><strong>salario</strong>: Salario anual en pesos</li>
+<li><strong>fecha_ingreso</strong>: Fecha de ingreso a la empresa</li>
+<li><strong>activo</strong>: Estado del empleado (True/False)</li>
+<li><strong>ciudad</strong>: Ciudad donde trabaja</li>
+<li><strong>experiencia_años</strong>: Años de experiencia laboral</li>
+</ul>
+<hr />
+<h3 id="ejercicios-loc-filtrado-por-etiquetas-ejercicios-1-10">🎯 EJERCICIOS LOC - Filtrado por Etiquetas (Ejercicios 1-10)</h3>
+<h4 id="ejercicio-1-seleccion-basica-con-loc"><strong>Ejercicio 1: Selección Básica con .loc</strong></h4>
+<p>Implementa una función que use <code>.loc</code> para seleccionar datos específicos del DataFrame. La función debe:</p>
+<ul>
+<li>Seleccionar un empleado específico por su ID</li>
+<li>Seleccionar múltiples empleados usando una lista de IDs</li>
+<li>Seleccionar un rango de empleados</li>
+<li>Mostrar todos los resultados con formato claro</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_01.py</code></p>
+<h4 id="ejercicio-2-filtrado-con-condiciones-simples"><strong>Ejercicio 2: Filtrado con Condiciones Simples</strong></h4>
+<p>Crea una función que filtre empleados usando condiciones con <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Filtrar empleados mayores de 40 años</li>
+<li>Filtrar empleados del departamento 'IT'</li>
+<li>Filtrar empleados con salario mayor a 80000</li>
+<li>Mostrar el número de registros encontrados en cada filtro</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_02.py</code></p>
+<h4 id="ejercicio-3-filtrado-con-multiples-condiciones"><strong>Ejercicio 3: Filtrado con Múltiples Condiciones</strong></h4>
+<p>Desarrolla una función que combine múltiples condiciones con <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Filtrar empleados de IT con salario mayor a 70000</li>
+<li>Filtrar empleados de Ventas o Marketing</li>
+<li>Filtrar empleados activos con más de 5 años de experiencia</li>
+<li>Mostrar estadísticas básicas de cada grupo filtrado</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_03.py</code></p>
+<h4 id="ejercicio-4-seleccion-de-columnas-especificas"><strong>Ejercicio 4: Selección de Columnas Específicas</strong></h4>
+<p>Implementa una función que seleccione columnas específicas con <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Seleccionar solo nombre y salario de todos los empleados</li>
+<li>Seleccionar un rango de columnas desde nombre hasta departamento</li>
+<li>Combinar filtro de filas y columnas para empleados mayores de 50 años</li>
+<li>Mostrar las primeras 10 filas de cada selección</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_04.py</code></p>
+<h4 id="ejercicio-5-modificacion-de-datos-con-loc"><strong>Ejercicio 5: Modificación de Datos con .loc</strong></h4>
+<p>Crea una función que modifique datos usando <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Aumentar el salario en 10% a empleados de IT</li>
+<li>Cambiar el estado a inactivo para empleados mayores de 60 años</li>
+<li>Actualizar la ciudad a 'Bogotá' para empleados de RRHH</li>
+<li>Mostrar los cambios realizados antes y después</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_05.py</code></p>
+<h4 id="ejercicio-6-filtrado-con-funciones-de-string"><strong>Ejercicio 6: Filtrado con Funciones de String</strong></h4>
+<p>Desarrolla una función que use métodos de string con <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Filtrar empleados cuyo nombre contenga el dígito '1'</li>
+<li>Filtrar empleados cuyo apellido termine en '5'</li>
+<li>Filtrar empleados de ciudades que empiecen con 'B'</li>
+<li>Mostrar estadísticas de cada grupo encontrado</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_06.py</code></p>
+<h4 id="ejercicio-7-filtrado-por-fechas"><strong>Ejercicio 7: Filtrado por Fechas</strong></h4>
+<p>Implementa una función que filtre por fechas usando <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Filtrar empleados que ingresaron en 2022</li>
+<li>Filtrar empleados que ingresaron en los últimos 2 años</li>
+<li>Filtrar empleados que ingresaron en el primer trimestre de cualquier año</li>
+<li>Calcular la antigüedad promedio de cada grupo</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_07.py</code></p>
+<h4 id="ejercicio-8-filtrado-avanzado-con-funciones"><strong>Ejercicio 8: Filtrado Avanzado con Funciones</strong></h4>
+<p>Crea una función que use funciones personalizadas con <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Crear una función que clasifique salarios (bajo, medio, alto)</li>
+<li>Filtrar empleados con salario superior al promedio</li>
+<li>Filtrar empleados con salario en el percentil 75</li>
+<li>Mostrar distribución de cada categoría</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_08.py</code></p>
+<h4 id="ejercicio-9-combinacion-de-filtros-complejos"><strong>Ejercicio 9: Combinación de Filtros Complejos</strong></h4>
+<p>Desarrolla una función que combine múltiples tipos de filtros. La función debe:</p>
+<ul>
+<li>Filtrar empleados activos, de IT o Finanzas, con salario &gt; 60000 y edad &lt; 45</li>
+<li>Usar operadores lógicos complejos con paréntesis</li>
+<li>Filtrar empleados de ciudades específicas con experiencia &gt; 10 años</li>
+<li>Crear un resumen estadístico de los grupos filtrados</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_09.py</code></p>
+<h4 id="ejercicio-10-analisis-completo-con-loc"><strong>Ejercicio 10: Análisis Completo con .loc</strong></h4>
+<p>Implementa una función que realice un análisis completo usando <code>.loc</code>. La función debe:</p>
+<ul>
+<li>Crear múltiples vistas del DataFrame usando diferentes filtros</li>
+<li>Calcular métricas por departamento y ciudad</li>
+<li>Identificar empleados con características específicas (top performers, nuevos, etc.)</li>
+<li>Generar un reporte completo con todas las métricas</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_10.py</code></p>
+<hr />
+<h3 id="ejercicios-iloc-filtrado-por-posicion-ejercicios-11-20">🔢 EJERCICIOS ILOC - Filtrado por Posición (Ejercicios 11-20)</h3>
+<h4 id="ejercicio-11-seleccion-basica-con-iloc"><strong>Ejercicio 11: Selección Básica con .iloc</strong></h4>
+<p>Implementa una función que use <code>.iloc</code> para seleccionar datos por posición. La función debe:</p>
+<ul>
+<li>Seleccionar la primera fila</li>
+<li>Seleccionar las primeras 5 filas</li>
+<li>Seleccionar la última fila</li>
+<li>Seleccionar filas específicas por posición</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_11.py</code></p>
+<h4 id="ejercicio-12-seleccion-con-rangos"><strong>Ejercicio 12: Selección con Rangos</strong></h4>
+<p>Crea una función que use rangos con <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Seleccionar filas del 10 al 20</li>
+<li>Seleccionar las últimas 10 filas</li>
+<li>Seleccionar filas pares</li>
+<li>Seleccionar cada tercera fila</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_12.py</code></p>
+<h4 id="ejercicio-13-seleccion-de-multiples-filas"><strong>Ejercicio 13: Selección de Múltiples Filas</strong></h4>
+<p>Desarrolla una función que seleccione múltiples filas no consecutivas. La función debe:</p>
+<ul>
+<li>Seleccionar filas usando una lista de posiciones específicas</li>
+<li>Seleccionar filas aleatorias</li>
+<li>Combinar diferentes métodos de selección</li>
+<li>Mostrar estadísticas de las filas seleccionadas</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_13.py</code></p>
+<h4 id="ejercicio-14-seleccion-de-columnas-por-posicion"><strong>Ejercicio 14: Selección de Columnas por Posición</strong></h4>
+<p>Implementa una función que seleccione columnas usando <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Seleccionar las primeras 3 columnas</li>
+<li>Seleccionar columnas específicas por posición</li>
+<li>Seleccionar la última columna</li>
+<li>Combinar selección de filas y columnas</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_14.py</code></p>
+<h4 id="ejercicio-15-modificacion-de-datos-con-iloc"><strong>Ejercicio 15: Modificación de Datos con .iloc</strong></h4>
+<p>Crea una función que modifique datos usando <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Modificar valores en posiciones específicas</li>
+<li>Modificar un rango de celdas</li>
+<li>Modificar múltiples columnas a la vez</li>
+<li>Mostrar los cambios realizados</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_15.py</code></p>
+<h4 id="ejercicio-16-seleccion-con-pasos"><strong>Ejercicio 16: Selección con Pasos</strong></h4>
+<p>Desarrolla una función que use pasos en la selección con <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Seleccionar cada segunda fila</li>
+<li>Seleccionar filas en orden inverso</li>
+<li>Seleccionar cada quinta fila empezando desde la tercera posición</li>
+<li>Combinar pasos en filas y columnas</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_16.py</code></p>
+<h4 id="ejercicio-17-seleccion-avanzada-con-iloc"><strong>Ejercicio 17: Selección Avanzada con .iloc</strong></h4>
+<p>Implementa una función que realice selecciones complejas. La función debe:</p>
+<ul>
+<li>Seleccionar subconjuntos específicos del DataFrame</li>
+<li>Usar arrays booleanos con <code>.iloc</code></li>
+<li>Combinar <code>.iloc</code> con funciones de agregación</li>
+<li>Crear vistas personalizadas del DataFrame</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_17.py</code></p>
+<h4 id="ejercicio-18-trabajo-con-listas-de-indices"><strong>Ejercicio 18: Trabajo con Listas de Índices</strong></h4>
+<p>Crea una función que trabaje con listas de índices dinámicas. La función debe:</p>
+<ul>
+<li>Generar listas de índices basadas en condiciones</li>
+<li>Encontrar posiciones que cumplan criterios específicos</li>
+<li>Seleccionar filas basadas en percentiles</li>
+<li>Mostrar diferentes muestras del DataFrame</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_18.py</code></p>
+<h4 id="ejercicio-19-combinaciones-de-iloc"><strong>Ejercicio 19: Combinaciones de .iloc</strong></h4>
+<p>Desarrolla una función que combine diferentes usos de <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Crear múltiples vistas usando diferentes patrones de selección</li>
+<li>Combinar selección aleatoria con selección sistemática</li>
+<li>Usar <code>.iloc</code> para crear muestras estratificadas</li>
+<li>Comparar diferentes métodos de muestreo</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_19.py</code></p>
+<h4 id="ejercicio-20-analisis-completo-con-iloc"><strong>Ejercicio 20: Análisis Completo con .iloc</strong></h4>
+<p>Implementa una función que realice un análisis completo usando <code>.iloc</code>. La función debe:</p>
+<ul>
+<li>Crear diferentes vistas del DataFrame usando posiciones</li>
+<li>Realizar análisis de muestras aleatorias vs sistemáticas</li>
+<li>Comparar rendimiento de diferentes métodos de selección</li>
+<li>Generar un reporte completo con métricas de las diferentes selecciones</li>
+</ul>
+<p><strong>Archivo:</strong> <code>src/ejercicio_20.py</code></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../js/password-protect.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

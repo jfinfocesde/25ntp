@@ -1,0 +1,2531 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="jhonfvg">
+      
+      
+        <link rel="canonical" href="https://jfinfocesde.github.io/25ntp/content/p9/">
+      
+      
+        <link rel="prev" href="../p8/">
+      
+      
+        <link rel="next" href="../p10/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas - Nuevas Tecnologías de Programación</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/password-protect.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#semana-9-filtros-condiciones-y-limpieza-de-datos-con-pandas" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-header__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nuevas Tecnologías de Programación
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="pink" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Contenido
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../activities/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Actividades
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../pi/p1/" class="md-tabs__link">
+          
+  
+    
+  
+  Proyecto Integrrador
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nuevas Tecnologías de Programación" class="md-nav__button md-logo" aria-label="Nuevas Tecnologías de Programación" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.75.75 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.75.75 0 0 1 .734.215m-6.56 0a.75.75 0 0 1 1.042.018.75.75 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"/></svg>
+
+    </a>
+    Nuevas Tecnologías de Programación
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contenido
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Contenido
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 1 - Pacto pedagógico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 2 - Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 3 - ciclos en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 4 - Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 5 - Guía Completa sobre Git, GitHub y Fork
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 6 - Evaluación Primer Momento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 7 Entornos Virtuales en Python:
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 8 - Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de Aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-filtrado-de-datos-y-operadores-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Filtrado de Datos y Operadores Condicionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Filtrado de Datos y Operadores Condicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-introduccion-a-los-filtros-en-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Introducción a los Filtros en Pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Operadores de Comparación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Operadores de Comparación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-operadores-basicos-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 Operadores Básicos de Comparación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-comparaciones-con-fechas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.2 Comparaciones con Fechas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-operadores-logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Operadores Lógicos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Operadores Lógicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-operador-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 Operador AND (&amp;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-operador-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 Operador OR (|)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-operador-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.3 Operador NOT (~)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-metodos-de-filtrado-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Métodos de Filtrado Avanzados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 Métodos de Filtrado Avanzados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-metodo-isin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1 Método isin()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-metodo-between" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2 Método between()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-filtros-con-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.3 Filtros con Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-metodo-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Método query()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 Método query()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-sintaxis-basica-de-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.1 Sintaxis Básica de query()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-query-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.2 query() Avanzado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-filtros-con-condiciones-multiples-y-complejas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 Filtros con Condiciones Múltiples y Complejas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Filtros con Condiciones Múltiples y Complejas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-combinando-multiples-operadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.1 Combinando Múltiples Operadores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-filtros-dinamicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.2 Filtros Dinámicos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-manejo-de-valores-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo de Valores Faltantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Manejo de Valores Faltantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-identificacion-de-valores-nulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Identificación de Valores Nulos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tratamiento-de-valores-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Tratamiento de Valores Faltantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-limpieza-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Limpieza de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Limpieza de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-eliminacion-de-duplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Eliminación de Duplicados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-transformacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Transformación de Datos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-validacion-y-preparacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validación y Preparación de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Validación y Preparación de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-validacion-de-rangos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Validación de Rangos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-normalizacion-y-estandarizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Normalización y Estandarización
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-limpieza-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Limpieza Completa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Mejores Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mejores Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-pipeline-de-limpieza" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Pipeline de Limpieza
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 10 Filtros .loc y .iloc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 11 - Operaciones de Agregar, Agrupar y Fusionar en Pandas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 12 - Evaluación de Conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 13 - Graficos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 14: Despliegue de Aplicaciones Streamlit en la Nube
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 16 - Evaluación de Conocimiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../p17/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 17 - Ensayo individual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Actividades
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Actividades
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 2: Ejercicios de Python para Resolver en Google Colab
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 3: Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 4: Estructuras de control (bucles) y Estructuras de datos - Colecciones en Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 8: Análisis de Datos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 9: Filtros y Operadores Lógicos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activities/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Semana 10: Filtrado y Selección de Datos con Pandas - Actividad Práctica
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Proyecto Integrrador
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Proyecto Integrrador
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Proyecto Integrador
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fuentes de datos abiertos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Consumir una API de Mockoon y Convertirla en un DataFrame con Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial: Crear una Aplicación Básica en Streamlit con Gemini API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi/p6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cursos Platzi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objetivos-de-aprendizaje" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objetivos de Aprendizaje
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-filtrado-de-datos-y-operadores-condicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Filtrado de Datos y Operadores Condicionales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Filtrado de Datos y Operadores Condicionales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-introduccion-a-los-filtros-en-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Introducción a los Filtros en Pandas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-operadores-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Operadores de Comparación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Operadores de Comparación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-operadores-basicos-de-comparacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.1 Operadores Básicos de Comparación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-comparaciones-con-fechas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.2 Comparaciones con Fechas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-operadores-logicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Operadores Lógicos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Operadores Lógicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-operador-and" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 Operador AND (&amp;)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-operador-or" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 Operador OR (|)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-operador-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.3 Operador NOT (~)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-metodos-de-filtrado-avanzados" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Métodos de Filtrado Avanzados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 Métodos de Filtrado Avanzados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-metodo-isin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.1 Método isin()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-metodo-between" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.2 Método between()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-filtros-con-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.3 Filtros con Strings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-metodo-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 Método query()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.5 Método query()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#151-sintaxis-basica-de-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.1 Sintaxis Básica de query()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#152-query-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.2 query() Avanzado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-filtros-con-condiciones-multiples-y-complejas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6 Filtros con Condiciones Múltiples y Complejas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.6 Filtros con Condiciones Múltiples y Complejas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#161-combinando-multiples-operadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.1 Combinando Múltiples Operadores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#162-filtros-dinamicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.2 Filtros Dinámicos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-manejo-de-valores-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manejo de Valores Faltantes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Manejo de Valores Faltantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-identificacion-de-valores-nulos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Identificación de Valores Nulos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-tratamiento-de-valores-faltantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Tratamiento de Valores Faltantes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-limpieza-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Limpieza de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Limpieza de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-eliminacion-de-duplicados" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Eliminación de Duplicados
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-transformacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Transformación de Datos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-validacion-y-preparacion-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Validación y Preparación de Datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Validación y Preparación de Datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-validacion-de-rangos" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Validación de Rangos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-normalizacion-y-estandarizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Normalización y Estandarización
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejercicios-practicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Ejercicios Prácticos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Ejercicios Prácticos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejercicio-1-limpieza-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1: Limpieza Completa
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mejores-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Mejores Prácticas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Mejores Prácticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-pipeline-de-limpieza" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Pipeline de Limpieza
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="semana-9-filtros-condiciones-y-limpieza-de-datos-con-pandas">Semana 9 - Filtros, Condiciones y Limpieza de Datos con Pandas</h1>
+<h2 id="objetivos-de-aprendizaje">Objetivos de Aprendizaje</h2>
+<p>Al finalizar esta semana, el estudiante será capaz de:</p>
+<ul>
+<li>Aplicar filtros y condiciones para seleccionar datos específicos</li>
+<li>Implementar técnicas de limpieza de datos</li>
+<li>Preparar datasets para análisis posteriores</li>
+<li>Manejar valores faltantes y duplicados</li>
+</ul>
+<h2 id="1-filtrado-de-datos-y-operadores-condicionales">1. Filtrado de Datos y Operadores Condicionales</h2>
+<h3 id="11-introduccion-a-los-filtros-en-pandas">1.1 Introducción a los Filtros en Pandas</h3>
+<p>El filtrado de datos es una de las operaciones más fundamentales en el análisis de datos. Pandas proporciona múltiples formas de filtrar DataFrames utilizando operadores condicionales, métodos especializados y expresiones lógicas.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="c1"># Crear un DataFrame más completo para ejemplos</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ana García&#39;</span><span class="p">,</span> <span class="s1">&#39;Carlos López&#39;</span><span class="p">,</span> <span class="s1">&#39;María Rodríguez&#39;</span><span class="p">,</span> <span class="s1">&#39;Juan Pérez&#39;</span><span class="p">,</span> <span class="s1">&#39;Sofía Martín&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;Pedro Sánchez&#39;</span><span class="p">,</span> <span class="s1">&#39;Laura González&#39;</span><span class="p">,</span> <span class="s1">&#39;Miguel Torres&#39;</span><span class="p">,</span> <span class="s1">&#39;Carmen Ruiz&#39;</span><span class="p">,</span> <span class="s1">&#39;David Moreno&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">26</span><span class="p">],</span>
+    <span class="s1">&#39;salario&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">80000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">95000</span><span class="p">,</span> <span class="mi">70000</span><span class="p">,</span> <span class="mi">55000</span><span class="p">,</span> <span class="mi">85000</span><span class="p">,</span> <span class="mi">48000</span><span class="p">],</span>
+    <span class="s1">&#39;departamento&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;Ventas&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">,</span> <span class="s1">&#39;Ventas&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;RRHH&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">,</span> <span class="s1">&#39;RRHH&#39;</span><span class="p">,</span> <span class="s1">&#39;Ventas&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2020-01-15&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-03-20&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-06-10&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-11-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-09-12&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;2017-02-28&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-08-14&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-01-30&#39;</span><span class="p">,</span> <span class="s1">&#39;2018-05-22&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-12-03&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;activo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+    <span class="s1">&#39;horas_semanales&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">44</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;DataFrame completo:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Información del DataFrame:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="12-operadores-de-comparacion">1.2 Operadores de Comparación</h3>
+<h4 id="121-operadores-basicos-de-comparacion">1.2.1 Operadores Básicos de Comparación</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Operador de igualdad (==)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== OPERADOR DE IGUALDAD (==) ===&quot;</span><span class="p">)</span>
+<span class="n">empleados_it</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados del departamento IT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">empleados_it</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Operador de desigualdad (!=)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR DE DESIGUALDAD (!=) ===&quot;</span><span class="p">)</span>
+<span class="n">no_it</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;IT&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados que NO son del departamento IT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">no_it</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Operador mayor que (&gt;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR MAYOR QUE (&gt;) ===&quot;</span><span class="p">)</span>
+<span class="n">salario_alto</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados con salario mayor a 70,000:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salario_alto</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Operador menor que (&lt;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR MENOR QUE (&lt;) ===&quot;</span><span class="p">)</span>
+<span class="n">empleados_jovenes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados menores de 30 años:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">empleados_jovenes</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Operador mayor o igual que (&gt;=)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR MAYOR O IGUAL QUE (&gt;=) ===&quot;</span><span class="p">)</span>
+<span class="n">experiencia_media</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados de 30 años o más:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">experiencia_media</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Operador menor o igual que (&lt;=)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR MENOR O IGUAL QUE (&lt;=) ===&quot;</span><span class="p">)</span>
+<span class="n">salario_medio</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">60000</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados con salario de 60,000 o menos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salario_medio</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="122-comparaciones-con-fechas">1.2.2 Comparaciones con Fechas</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== FILTROS CON FECHAS ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empleados que ingresaron después de 2020</span>
+<span class="n">fecha_corte</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">)</span>
+<span class="n">ingresos_recientes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">fecha_corte</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados que ingresaron después del 1 de enero de 2020:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ingresos_recientes</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Empleados con más de 3 años en la empresa</span>
+<span class="n">fecha_limite</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">3</span><span class="o">*</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">veteranos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">fecha_limite</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados con más de 3 años en la empresa:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">veteranos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h3 id="13-operadores-logicos">1.3 Operadores Lógicos</h3>
+<h4 id="131-operador-and">1.3.1 Operador AND (&amp;)</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR AND (&amp;) ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empleados jóvenes del departamento IT</span>
+<span class="n">jovenes_it</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados menores de 30 años Y del departamento IT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jovenes_it</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Empleados con salario alto y activos</span>
+<span class="n">salario_alto_activos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;activo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados con salario &gt; 70,000 Y que están activos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salario_alto_activos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Múltiples condiciones AND</span>
+<span class="n">condiciones_multiples</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> 
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">35</span><span class="p">)</span> <span class="o">&amp;</span> 
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50000</span><span class="p">)</span> <span class="o">&amp;</span> 
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;activo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados entre 25-35 años, salario &gt; 50,000 y activos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">condiciones_multiples</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="132-operador-or">1.3.2 Operador OR (|)</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR OR (|) ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empleados muy jóvenes o muy experimentados</span>
+<span class="n">edades_extremas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados menores de 25 años O mayores de 40:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">edades_extremas</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Empleados de IT o Marketing</span>
+<span class="n">it_marketing</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados de IT O Marketing:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">it_marketing</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Salarios muy altos o muy bajos</span>
+<span class="n">salarios_extremos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80000</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados con salario &lt; 50,000 O &gt; 80,000:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salarios_extremos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="133-operador-not">1.3.3 Operador NOT (~)</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== OPERADOR NOT (~) ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empleados que NO son del departamento IT</span>
+<span class="n">no_it</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados que NO son del departamento IT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">no_it</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Empleados que NO están activos</span>
+<span class="n">inactivos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;activo&#39;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados que NO están activos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inactivos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Negación de condiciones complejas</span>
+<span class="n">no_jovenes_it</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;IT&#39;</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados que NO son (jóvenes Y de IT):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">no_jovenes_it</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h3 id="14-metodos-de-filtrado-avanzados">1.4 Métodos de Filtrado Avanzados</h3>
+<h4 id="141-metodo-isin">1.4.1 Método isin()</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== MÉTODO isin() ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Filtrar por múltiples departamentos</span>
+<span class="n">departamentos_tecnicos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;Marketing&#39;</span><span class="p">]</span>
+<span class="n">empleados_tecnicos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">departamentos_tecnicos</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados de departamentos técnicos (IT, Marketing):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">empleados_tecnicos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Filtrar por múltiples edades específicas</span>
+<span class="n">edades_especificas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">]</span>
+<span class="n">empleados_edades_esp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">edades_especificas</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados con edades específicas (25, 30, 35):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">empleados_edades_esp</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Negación con isin()</span>
+<span class="n">no_tecnicos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">departamentos_tecnicos</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados que NO son de departamentos técnicos:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">no_tecnicos</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="142-metodo-between">1.4.2 Método between()</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== MÉTODO between() ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Empleados en rango de edad</span>
+<span class="n">edad_media</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados entre 25 y 35 años (inclusive):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">edad_media</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Salarios en rango específico</span>
+<span class="n">salario_medio</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados con salario entre 50,000 y 75,000:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">salario_medio</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+
+<span class="c1"># between() con fechas</span>
+<span class="n">fecha_inicio</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">)</span>
+<span class="n">fecha_fin</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2020-12-31&#39;</span><span class="p">)</span>
+<span class="n">ingresos_periodo</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="n">fecha_inicio</span><span class="p">,</span> <span class="n">fecha_fin</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados que ingresaron entre 2019 y 2020:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ingresos_periodo</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;fecha_ingreso&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="143-filtros-con-strings">1.4.3 Filtros con Strings</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== FILTROS CON STRINGS ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Nombres que contienen una subcadena</span>
+<span class="n">nombres_con_a</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados cuyo nombre contiene &#39;a&#39; (sin distinción de mayúsculas):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombres_con_a</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Nombres que empiezan con una letra específica</span>
+<span class="n">nombres_m</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados cuyo nombre empieza con &#39;M&#39;:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombres_m</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Nombres que terminan con una subcadena</span>
+<span class="n">nombres_ez</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;ez&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados cuyo apellido termina en &#39;ez&#39;:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombres_ez</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Filtros con expresiones regulares</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="n">nombres_patron</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^[A-M]&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados cuyo nombre empieza con letras A-M:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nombres_patron</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h3 id="15-metodo-query">1.5 Método query()</h3>
+<h4 id="151-sintaxis-basica-de-query">1.5.1 Sintaxis Básica de query()</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== MÉTODO query() - SINTAXIS BÁSICA ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Consulta simple</span>
+<span class="n">resultado1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;edad &gt; 30&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados mayores de 30 años (usando query):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado1</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Múltiples condiciones con and</span>
+<span class="n">resultado2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;edad &gt; 25 and salario &gt; 60000&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados &gt; 25 años y salario &gt; 60,000:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado2</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Múltiples condiciones con or</span>
+<span class="n">resultado3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;departamento == &quot;IT&quot; or departamento == &quot;Marketing&quot;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados de IT o Marketing:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado3</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="152-query-avanzado">1.5.2 query() Avanzado</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== MÉTODO query() - AVANZADO ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Usando variables externas</span>
+<span class="n">edad_minima</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">salario_minimo</span> <span class="o">=</span> <span class="mi">70000</span>
+<span class="n">resultado4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;edad &gt;= @edad_minima and salario &gt;= @salario_minimo&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empleados &gt;= </span><span class="si">{</span><span class="n">edad_minima</span><span class="si">}</span><span class="s2"> años y salario &gt;= </span><span class="si">{</span><span class="n">salario_minimo</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado4</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Consultas con listas</span>
+<span class="n">departamentos</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;RRHH&#39;</span><span class="p">]</span>
+<span class="n">resultado5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;departamento in @departamentos&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados en departamentos </span><span class="si">{</span><span class="n">departamentos</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado5</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Consultas complejas</span>
+<span class="n">resultado6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;(edad &lt; 30 and salario &gt; 50000) or (edad &gt; 40 and departamento == &quot;IT&quot;)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados jóvenes con buen salario O veteranos de IT:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resultado6</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h3 id="16-filtros-con-condiciones-multiples-y-complejas">1.6 Filtros con Condiciones Múltiples y Complejas</h3>
+<h4 id="161-combinando-multiples-operadores">1.6.1 Combinando Múltiples Operadores</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== CONDICIONES MÚLTIPLES Y COMPLEJAS ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Condición muy específica</span>
+<span class="n">condicion_compleja</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+    <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">35</span><span class="p">))</span> <span class="o">&amp;</span>  <span class="c1"># Edad entre 25-35</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span> <span class="o">&amp;</span>   <span class="c1"># Salario sobre la mediana</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;activo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span>                     <span class="c1"># Empleado activo</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;horas_semanales&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">40</span><span class="p">)</span>                <span class="c1"># Tiempo completo</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empleados que cumplen condiciones complejas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">condicion_compleja</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">,</span> <span class="s1">&#39;horas_semanales&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Usando funciones lambda para condiciones personalizadas</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">es_senior</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">35</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">75000</span>
+
+<span class="n">seniors</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">es_senior</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empleados senior (&gt;35 años y salario &gt;75,000):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">seniors</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h4 id="162-filtros-dinamicos">1.6.2 Filtros Dinámicos</h4>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== FILTROS DINÁMICOS ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Función para crear filtros dinámicos</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filtrar_empleados</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">edad_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edad_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">salario_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">departamentos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solo_activos</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Función para filtrar empleados con múltiples criterios opcionales</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">resultado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">edad_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="p">[</span><span class="n">resultado</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">edad_min</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">edad_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="p">[</span><span class="n">resultado</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">edad_max</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">salario_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="p">[</span><span class="n">resultado</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">salario_min</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">departamentos</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="p">[</span><span class="n">resultado</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">departamentos</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="n">solo_activos</span><span class="p">:</span>
+        <span class="n">resultado</span> <span class="o">=</span> <span class="n">resultado</span><span class="p">[</span><span class="n">resultado</span><span class="p">[</span><span class="s1">&#39;activo&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">resultado</span>
+
+<span class="c1"># Ejemplos de uso de filtros dinámicos</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtro 1 - Solo empleados activos de IT con salario &gt; 60,000:&quot;</span><span class="p">)</span>
+<span class="n">filtro1</span> <span class="o">=</span> <span class="n">filtrar_empleados</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">salario_min</span><span class="o">=</span><span class="mi">60000</span><span class="p">,</span> <span class="n">departamentos</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;IT&#39;</span><span class="p">],</span> <span class="n">solo_activos</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtro1</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;departamento&#39;</span><span class="p">,</span> <span class="s1">&#39;salario&#39;</span><span class="p">,</span> <span class="s1">&#39;activo&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Filtro 2 - Empleados entre 25-40 años:&quot;</span><span class="p">)</span>
+<span class="n">filtro2</span> <span class="o">=</span> <span class="n">filtrar_empleados</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">edad_min</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">edad_max</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtro2</span><span class="p">[[</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span> <span class="s1">&#39;edad&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h2 id="2-manejo-de-valores-faltantes">2. Manejo de Valores Faltantes</h2>
+<h3 id="21-identificacion-de-valores-nulos">2.1 Identificación de Valores Nulos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear DataFrame con valores faltantes</span>
+<span class="n">data_con_nulos</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df_nulos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_con_nulos</span><span class="p">)</span>
+
+<span class="c1"># Verificar valores nulos</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_nulos</span><span class="o">.</span><span class="n">isnull</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_nulos</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_nulos</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</code></pre></div>
+<h3 id="22-tratamiento-de-valores-faltantes">2.2 Tratamiento de Valores Faltantes</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Eliminar filas con valores nulos</span>
+<span class="n">df_sin_nulos</span> <span class="o">=</span> <span class="n">df_nulos</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Eliminar columnas con valores nulos</span>
+<span class="n">df_sin_columnas_nulas</span> <span class="o">=</span> <span class="n">df_nulos</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Rellenar valores nulos</span>
+<span class="n">df_rellenado</span> <span class="o">=</span> <span class="n">df_nulos</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Con cero</span>
+<span class="n">df_rellenado_media</span> <span class="o">=</span> <span class="n">df_nulos</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_nulos</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># Con la media</span>
+<span class="n">df_rellenado_anterior</span> <span class="o">=</span> <span class="n">df_nulos</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>  <span class="c1"># Valor anterior</span>
+</code></pre></div>
+<h2 id="3-limpieza-de-datos">3. Limpieza de Datos</h2>
+<h3 id="31-eliminacion-de-duplicados">3.1 Eliminación de Duplicados</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crear DataFrame con duplicados</span>
+<span class="n">data_duplicados</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ana&#39;</span><span class="p">,</span> <span class="s1">&#39;Carlos&#39;</span><span class="p">,</span> <span class="s1">&#39;Ana&#39;</span><span class="p">,</span> <span class="s1">&#39;María&#39;</span><span class="p">,</span> <span class="s1">&#39;Carlos&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df_dup</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_duplicados</span><span class="p">)</span>
+
+<span class="c1"># Identificar duplicados</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_dup</span><span class="o">.</span><span class="n">duplicated</span><span class="p">())</span>
+
+<span class="c1"># Eliminar duplicados</span>
+<span class="n">df_sin_duplicados</span> <span class="o">=</span> <span class="n">df_dup</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+
+<span class="c1"># Eliminar duplicados basado en columnas específicas</span>
+<span class="n">df_sin_dup_nombre</span> <span class="o">=</span> <span class="n">df_dup</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="32-transformacion-de-datos">3.2 Transformación de Datos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Convertir tipos de datos</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int32&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+
+<span class="c1"># Limpiar texto</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>  <span class="c1"># Eliminar espacios</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>  <span class="c1"># Convertir a mayúsculas</span>
+
+<span class="c1"># Reemplazar valores</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;departamento&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;Tecnología&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="4-validacion-y-preparacion-de-datos">4. Validación y Preparación de Datos</h2>
+<h3 id="41-validacion-de-rangos">4.1 Validación de Rangos</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validar rangos de edad</span>
+<span class="n">edades_validas</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">65</span><span class="p">)]</span>
+
+<span class="c1"># Identificar outliers usando IQR</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+<span class="n">limite_inferior</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+<span class="n">limite_superior</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+
+<span class="n">sin_outliers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">limite_inferior</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">limite_superior</span><span class="p">)]</span>
+</code></pre></div>
+<h3 id="42-normalizacion-y-estandarizacion">4.2 Normalización y Estandarización</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># Normalización (0-1)</span>
+<span class="n">scaler_minmax</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_normalizado&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_minmax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+
+<span class="c1"># Estandarización (media=0, std=1)</span>
+<span class="n">scaler_standard</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;salario_estandarizado&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler_standard</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;salario&#39;</span><span class="p">]])</span>
+</code></pre></div>
+<h2 id="5-ejercicios-practicos">5. Ejercicios Prácticos</h2>
+<h3 id="ejercicio-1-limpieza-completa">Ejercicio 1: Limpieza Completa</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dataset de ejemplo con problemas comunes</span>
+<span class="n">data_problematica</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;nombre&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;  Ana  &#39;</span><span class="p">,</span> <span class="s1">&#39;CARLOS&#39;</span><span class="p">,</span> <span class="s1">&#39;maría&#39;</span><span class="p">,</span> <span class="s1">&#39;  Juan&#39;</span><span class="p">,</span> <span class="s1">&#39;Sofía&#39;</span><span class="p">,</span> <span class="s1">&#39;Ana&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;edad&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span>
+    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ana@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;CARLOS@EMAIL.COM&#39;</span><span class="p">,</span> <span class="s1">&#39;maria@email&#39;</span><span class="p">,</span> <span class="s1">&#39;juan@email.com&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;ana@email.com&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;salario&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">75000</span><span class="p">,</span> <span class="mi">45000</span><span class="p">,</span> <span class="mi">999999</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">]</span>  <span class="c1"># 999999 es outlier</span>
+<span class="p">}</span>
+
+<span class="n">df_problematico</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_problematica</span><span class="p">)</span>
+
+<span class="c1"># Proceso de limpieza paso a paso</span>
+<span class="c1"># 1. Limpiar nombres</span>
+<span class="n">df_limpio</span> <span class="o">=</span> <span class="n">df_problematico</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;nombre&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+
+<span class="c1"># 2. Manejar valores faltantes</span>
+<span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;edad&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_limpio</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 3. Validar emails</span>
+<span class="n">df_limpio</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;@.*\.&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+
+<span class="c1"># 4. Eliminar duplicados</span>
+<span class="n">df_limpio</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 5. Tratar outliers</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+<span class="n">df_limpio</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">)</span> <span class="o">&amp;</span> 
+    <span class="p">(</span><span class="n">df_limpio</span><span class="p">[</span><span class="s1">&#39;salario&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset original:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_problematico</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dataset limpio:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="6-mejores-practicas">6. Mejores Prácticas</h2>
+<h3 id="61-pipeline-de-limpieza">6.1 Pipeline de Limpieza</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">limpiar_dataset</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pipeline de limpieza de datos</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df_limpio</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># 1. Eliminar duplicados</span>
+    <span class="n">df_limpio</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># 2. Manejar valores faltantes</span>
+    <span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">df_limpio</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df_limpio</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_limpio</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">df_limpio</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df_limpio</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Desconocido&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># 3. Limpiar texto</span>
+    <span class="k">for</span> <span class="n">columna</span> <span class="ow">in</span> <span class="n">df_limpio</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df_limpio</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_limpio</span><span class="p">[</span><span class="n">columna</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">df_limpio</span>
+
+<span class="c1"># Usar el pipeline</span>
+<span class="n">df_resultado</span> <span class="o">=</span> <span class="n">limpiar_dataset</span><span class="p">(</span><span class="n">df_problematico</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2025 &copy; by JFVG
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs.sticky", "navigation.tabs", "navigation.top", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../js/password-protect.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
